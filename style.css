@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@theme 
+{
+    --shadow-glass:inset 2px 2px 2px 1px rgba(255,255,255,0.2),inset 0px 0px 0px 1px rgba(255,255,255,0.2);
+}
+@media (max-width:400px)
+{
+    .cards
+    {
+        grid-template-columns:repeat(1,1fr);
+    }
+}

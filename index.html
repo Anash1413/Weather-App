@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    
+        .wrapper{
+            background-image: url(./Images/og.png);
+           
+        }
+        .active{
+            display: flex;
+            scale: 1;
+        }
+        .cards.active{
+            display: grid;
+        }
+        .errorPage.active{
+            display: block;
+        }
+        .loadingPage.active{
+            display: grid;
+        }
+        .currentTab{
+          background-color: #e4e4e431;
+          transform: scale(0.98);;
+        }
+    </style>
+</head>
+
+<body class="w-[100vw] box-border m-0 p-0 h-[100%] bg-no-repeat bg-cover overflow-x-hidden wrapper" >
+    <!-- wrapper div  -->
+    <div class="h-full relative pb-6 p-2.5  text-white">
+
+       <div class=" ">
+         <h1 class="mt-4 uppercase text-4xl font-bold text-center">Weather App</h1>
+         <!-- tab section  -->
+           <div class="max-w-[580px] mt-5  m-auto rounded-[30px] shadow-glass backdrop-blur-[90px] flex justify-between ">
+              <button yourWeather class="hover:bg-[#e4e4e428] cursor-pointer hover:text-black transition-all duration-200 rounded-l-[30px] p-4 ">Your Weather
+              </button>
+             <button searchWeather class=" hover:bg-[#e4e4e431] cursor-pointer hover:text-black transition-all duration-200 rounded-r-[30px] p-4 ">Search Weather
+
+              </button>
+         
+            </div>
+              <!-- tab section  end-->
+                 <!-- search bar  -->
+               <div searchBar class="mx-auto scale-0  transition-all duration-500 mt-5 max-w-[570px]  gap-3">
+                  <form searchForm action=""
+                  class="flex w-full gap-2.5">
+                     <input searchInput type="search" placeholder="Enter City Name ....."
+                      class="flex-1 text-center text-[20px] shadow-glass rounded-2xl bg-[#9f9d9d92] p-1.5">
+                <img src="./Images/search.png" class="p-2 bg-[#9f9d9d92] shadow-glass rounded-full" height="45px" width="45px" alt="">
+               
+                  </form>  
+              </div>
+             <!-- search bar end -->
+            <!-- acces location satrt -->
+             <div accessLocation class="mx-auto rounded-[50px] hidden scale-0 shadow-glass transition-all duration-500 hidde mt-7 p-14 max-w-[580px]  flex-col backdrop-blur-3xl">
+                <img class="rounded-full mx-auto mt-[10px]" src="./Images/location.png" height="80px" width="80px" alt="">
+                <h1 class="text-3xl font-bold text-center mt-5 ">Grant Location Access</h1>
+                <p class="text-center mt-2.5">Allow access to get weather information</p>
+                 <button grantAccess class="p-3.5 w-[150px] rounded-2xl m-auto mt-6 cursor-pointer hover:bg-[#434347af] transition-all duration-150 bg-[#414143]">Grant Access</button>
+             </div>
+            <!-- acces location end -->
+             <!-- search location tab  -->
+              <div searchResult class="mx-auto rounded-[50px] scale-0 transition-all shadow-glass duration-500 gap-y-4 justify-center items-center mt-7 p-6 max-w-[580px]  flex-col backdrop-blur-[10px]">
+                <div class="flex justify-center gap-x-3 w-full h-6 "> 
+                    <h1 cityName class="text-3xl"></h1>
+                    <img countryFlag class="w-[45px] h-[25px]"  alt="">
+                </div>
+                <h1 weatherDesc class="text-2xl"></h1>
+                <img weatherIcon width="50px" height="29px" alt="">
+                <h2 temp class="text-5xl font-bold"></h2>
+
+                 <!-- cards strt -->
+                <div Cards class="mx-auto cards rounded-[50px] transition-all gap-6 shadow-glass duration-500 scale-0 mt-4 p-8 max-w-[640px] grid-cols-2 sm:grid-cols-3 backdrop-blur-3xl">
+                  <!-- card 1  -->
+                 <div class="p-2 bg-[#bab4b424] shadow-glass rounded-2xl flex flex-col items-center">
+                    <img src="./Images/humidity.png" height="50px" width="50px" alt="">
+                    <h2 class="text-2xl">Humidity</h2>
+                    <p humidity class="text-[20px]"></p>
+                   </div>
+
+                    <!-- card 2  -->
+                   <div class="p-2 bg-[#bab4b424] shadow-glass rounded-2xl flex flex-col items-center">
+                    <img src="./Images/wind.png" height="50px" width="50px" alt="">
+                    <h2 class="text-2xl">WindSpeed</h2>
+                    <p windspeed class="text-[20px]"></p>
+                   </div>
+
+                    <!-- card 3  -->
+                   <div class="p-2 bg-[#bab4b424] shadow-glass rounded-2xl flex flex-col items-center">
+                    <img src="./Images/cloud.png" height="50px" width="50px" alt="">
+                    <h2 class="text-2xl">Clouds</h2>
+                    <p cloudiness class="text-[20px]"></p>
+                   </div>
+                 </div>
+                <!-- cards end  -->
+              </div>
+            <!-- search location tab end -->
+
+           
+              <!-- loading gif  -->
+               <div loadingPage class="loadingPage absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto scale-0 transition-all duration-300">
+                <img src="./Images/loading.gif" class="mx-auto" height="180px" width="182px" alt="">
+                <h1 class="mx-auto text-center">Loading... </h1>
+                <h1 class="text-center">Please Cooperate With us</h1>
+               </div>
+               <!-- loading gif end -->
+              <!-- Error strt   -->
+                 <div errorPage class="errorPage m-auto absolute top-[55%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto hidden ">
+                    <img class="mx-auto mt-7" src="./Images/not-found.png" width="300px" height="200px" alt="">
+                    <h1 errorMessage class="text-center ">Failed To Fetch</h1>
+                 </div>
+              <!-- Error end   -->
+              
+
+       </div>
+
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
