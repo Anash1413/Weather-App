@@ -146,6 +146,7 @@ grantAccessButton.addEventListener('click', getLocation);
 
 const searchInput = document.querySelector("[searchInput]");
 const searchForm = document.querySelector("[searchForm]");
+const searchImg = document.querySelector("[searchImg]");
 
 searchForm.addEventListener('submit', (e) =>
 {
@@ -159,6 +160,10 @@ console.log(" 1 searched " + searchInput.value);
 searchInput.value = ""
 });
 
+searchImg.addEventListener('click', () =>{
+    fetchSearchInput(searchInput.value);
+    searchInput.value = ""
+})
 async function fetchSearchInput(city)
 {
     loadingPage.classList.remove("active");
